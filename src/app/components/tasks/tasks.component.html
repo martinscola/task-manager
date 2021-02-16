@@ -1,0 +1,38 @@
+<div class = "container mt-5">
+    <div class = "row justify-content-center my-5">
+        <div class = "col-lg-8">
+            <form action = "#">
+                <label for="task">Task</label>
+                <input name="task" id="task" type = "text" [(ngModel)]="taskName" class =
+                    "form-control form-control-lg text-center" (keyup.enter)="addTask()"
+                       placeholder="Type the new Task">
+            </form>
+        </div>
+    </div>
+    <div *ngIf="taskList.length == 0" class = "row justify-content-center">
+        <div class = "col-lg-8">
+            <p class="text-center bg-success rounded py-2 px-3"><span class = "h4">
+                Hooray! There are no pending tasks
+            </span></p>
+        </div>
+    </div>
+    <div *ngIf="taskList.length >= 1" class="row justify-content-center">
+        <div class="col-lg-8">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" *ngFor="let task of
+                taskList; let index = index" [ngClass]="{'bg-success':task.status}">
+                    <span class="h4">{{ task.name }}</span>
+                    <div class="d-flex col-2 justify-content-between px-1">
+                        <span class = "cursor" (click)="updateStatus(task,  index)">
+                            <i class="fas fa-check fa-2x"
+                               [ngClass]="{'text-success':!task.status, 'text-white': task.status}"></i>
+                        </span>
+                        <span class = "cursor" (click)="removeTask(index)">
+                            <i class="fas fa-trash fa-2x text-danger"></i>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.form-control-lg{
+    font-size: 1.6rem;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.cursor:hover {
+    opacity: 75%;
+}
